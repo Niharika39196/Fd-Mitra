@@ -187,7 +187,7 @@ export default function ChatUI({ language, languageConfig, onResetLanguage }) {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/chat', {
+      const response = await fetch('https://fd-mitra-backend.onrender.com/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: msg, language: language, history: messages })
@@ -438,3 +438,4 @@ export default function ChatUI({ language, languageConfig, onResetLanguage }) {
     </div>
   );
 }
+
