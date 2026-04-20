@@ -261,7 +261,7 @@ export default function LanguagePicker({ languages, onSelectLanguage }) {
         </div>
 
         <div style={styles.footer}>
-          Powered by AI · Built for Bharat · 🇮🇳 v2
+          
         </div>
       </div>
     </div>
