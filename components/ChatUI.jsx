@@ -5,10 +5,10 @@ import RatesTab from './RatesTab';
 
 const EXAMPLE_PROMPTS = {
   Hindi: [
-    'Suryoday Bank 8.5% p.a. 12M safe hai kya?',
-    '1 lakh lagaun toh kitna milega?',
-    'FD kaise book karein?',
-    'SBI aur HDFC FD mein kaun better hai?',
+    'सूर्योदय बैंक 8.5% FD सुरक्षित है क्या?',
+    '1 लाख लगाऊं तो कितना मिलेगा?',
+    'FD कैसे बुक करें?',
+    'SBI और HDFC FD में कौन बेहतर है?',
   ],
   English: [
     'Is Suryoday Bank 8.5% FD safe?',
@@ -17,10 +17,10 @@ const EXAMPLE_PROMPTS = {
     'Compare SBI vs HDFC FD rates',
   ],
   Bhojpuri: [
-    'Suryoday Bank ke FD safe baa ka?',
-    '1 lakh lagaile toh kitna milega?',
-    'FD kaise book kari?',
-    'Kaun bank better baa FD khatir?',
+    'सूर्योदय बैंक के FD सुरक्षित बा का?',
+    '1 लाख लगाइले त कतना मिली?',
+    'FD कइसे बुक करीं?',
+    'कौन बैंक बेहतर बा FD खातिर?',
   ],
   Marathi: [
     'Suryoday Bank 8.5% FD सुरक्षित आहे का?',
