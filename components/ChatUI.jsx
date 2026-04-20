@@ -276,7 +276,8 @@ export default function ChatUI({ language, languageConfig, onResetLanguage }) {
 
       {/* Tab content */}
       {activeTab === 'rates' ? (
-        <RatesTab onAskQuestion={handleAskFromRates} language={language} />
+        // ✅ FIX: key={language} forces RatesTab to re-mount when language changes
+        <RatesTab key={language} onAskQuestion={handleAskFromRates} language={language} />
       ) : (
         <>
           <div style={{ flex: 1, overflowY: 'auto', padding: '20px 16px', display: 'flex', flexDirection: 'column', gap: '16px', position: 'relative', zIndex: 1 }}>
@@ -438,4 +439,3 @@ export default function ChatUI({ language, languageConfig, onResetLanguage }) {
     </div>
   );
 }
-
