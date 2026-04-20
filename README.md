@@ -16,18 +16,18 @@ Regional language users face accessibility barriers
 
 FD Mitra simplifies FD decision-making using:
 
- Voice + Chat Interface
- Multi-language support (including 4 regional languages)
- Smart FD guidance based on user input
- Simple, conversational experience instead of complex forms
+1. Voice + Chat Interface
+2. Multi-language support (including 4 regional languages)
+3. Smart FD guidance based on user input
+4. Simple, conversational experience instead of complex forms
 
 # Key Features
 
- Voice-enabled interaction (speak instead of typing)
- Chat-based advisory system
- Regional language support
- Intelligent responses for FD-related queries
- Fast, responsive UI
+- Voice-enabled interaction (speak instead of typing)
+- Chat-based advisory system
+- Regional language support
+- Intelligent responses for FD-related queries
+- Fast, responsive UI
 
 ## Prerequisites
 - Node.js 18+
