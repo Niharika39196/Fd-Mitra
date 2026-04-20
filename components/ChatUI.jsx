@@ -36,6 +36,35 @@ const EXAMPLE_PROMPTS = {
   ],
 };
 
+// FIX 2: Welcome message translations for every language
+const WELCOME_TEXT = {
+  Hindi: {
+    greeting: 'नमस्ते! FD Mitra में आपका स्वागत है',
+    subtext: 'Fixed Deposits के बारे में कुछ भी पूछें — सब कुछ आसान भाषा में समझाएंगे।',
+    micHint: '🎤 माइक से बोलें · 🔊 कोई भी जवाब सुनने के लिए Play दबाएं',
+  },
+  English: {
+    greeting: 'Welcome to FD Mitra!',
+    subtext: "Ask me anything about Fixed Deposits — I'll explain everything simply.",
+    micHint: '🎤 Speak your question using the mic · 🔊 Tap Play to hear any response',
+  },
+  Bhojpuri: {
+    greeting: 'प्रणाम! FD Mitra में रउआ के स्वागत बा',
+    subtext: 'Fixed Deposits के बारे में कुछ भी पूछीं — सब कुछ आसान भाषा में बताएम।',
+    micHint: '🎤 माइक से बोलीं · 🔊 कौनो जवाब सुने खातिर Play दबाईं',
+  },
+  Marathi: {
+    greeting: 'नमस्कार! FD Mitra मध्ये आपले स्वागत आहे',
+    subtext: 'Fixed Deposits बद्दल काहीही विचारा — सर्व काही सोप्या भाषेत सांगेन।',
+    micHint: '🎤 मायक्रोफोनने बोला · 🔊 कोणताही प्रतिसाद ऐकण्यासाठी Play दाबा',
+  },
+  Gujarati: {
+    greeting: 'નમસ્તે! FD Mitra માં આપનું સ્વાગત છે',
+    subtext: 'Fixed Deposits વિશે કંઈ પણ પૂછો — બધું સરળ ભાષામાં સમજાવીશ।',
+    micHint: '🎤 માઇકથી બોલો · 🔊 કોઈ પણ જવાબ સાંભળવા Play દબાવો',
+  },
+};
+
 // Voice controls shown under each AI message
 function VoiceControls({ text, voiceCode, speak, pause, resume, stop, isPlaying, isPaused, isActive, setActive, msgId }) {
 
@@ -44,18 +73,9 @@ function VoiceControls({ text, voiceCode, speak, pause, resume, stop, isPlaying,
     speak(text, voiceCode);
   };
 
-  const handlePause = () => {
-    pause();
-  };
-
-  const handleResume = () => {
-    resume();
-  };
-
-  const handleStop = () => {
-    stop();
-    setActive(null);
-  };
+  const handlePause = () => { pause(); };
+  const handleResume = () => { resume(); };
+  const handleStop = () => { stop(); setActive(null); };
 
   const btnStyle = (color) => ({
     padding: '5px 12px', borderRadius: '6px', border: `1px solid ${color}22`,
@@ -91,7 +111,6 @@ function VoiceControls({ text, voiceCode, speak, pause, resume, stop, isPlaying,
     );
   }
 
-  // Finished playing
   return (
     <div style={{ display: 'flex', gap: '6px', marginTop: '10px' }}>
       <button style={btnStyle('#00b4ff')} onClick={handlePlay}>🔄 Replay</button>
@@ -113,9 +132,7 @@ export default function ChatUI({ language, languageConfig, onResetLanguage }) {
     startListening, stopListening, isSupported: sttSupported
   } = useSpeechRecognition(languageConfig.voiceCode);
 
-  const {
-    speak, pause, resume, stop, isPlaying, isPaused
-  } = useSpeechSynthesis();
+  const { speak, pause, resume, stop, isPlaying, isPaused } = useSpeechSynthesis();
 
   useEffect(() => {
     setMessages([]);
@@ -211,6 +228,8 @@ export default function ChatUI({ language, languageConfig, onResetLanguage }) {
   };
 
   const prompts = EXAMPLE_PROMPTS[language] || EXAMPLE_PROMPTS['English'];
+  // FIX 2: Pick welcome text based on selected language
+  const welcome = WELCOME_TEXT[language] || WELCOME_TEXT['English'];
 
   return (
     <div style={{
@@ -276,7 +295,7 @@ export default function ChatUI({ language, languageConfig, onResetLanguage }) {
 
       {/* Tab content */}
       {activeTab === 'rates' ? (
-        // ✅ FIX: key={language} forces RatesTab to re-mount when language changes
+        // FIX 1: key={language} forces RatesTab to fully re-mount when language changes
         <RatesTab key={language} onAskQuestion={handleAskFromRates} language={language} />
       ) : (
         <>
@@ -285,12 +304,13 @@ export default function ChatUI({ language, languageConfig, onResetLanguage }) {
             {messages.length === 0 && (
               <div style={{ textAlign: 'center', padding: '32px 16px 16px', color: 'rgba(255,255,255,0.35)', fontSize: '13px', lineHeight: '1.8' }}>
                 <div style={{ fontSize: '36px', marginBottom: '12px' }}>🙏</div>
+                {/* FIX 2: welcome text now changes with selected language */}
                 <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '15px', fontWeight: '600', marginBottom: '6px' }}>
-                  नमस्ते! FD Mitra में आपका स्वागत है
+                  {welcome.greeting}
                 </div>
-                <div>Ask me anything about Fixed Deposits — I'll explain everything simply.</div>
+                <div>{welcome.subtext}</div>
                 <div style={{ marginTop: '4px', color: 'rgba(0,180,255,0.5)', fontSize: '12px' }}>
-                  🎤 Speak your question using the mic · 🔊 Tap Play to hear any response
+                  {welcome.micHint}
                 </div>
               </div>
             )}
