@@ -1,6 +1,33 @@
 # FD Mitra
 
-FD Mitra is a multi-language voice-capable Fixed Deposit advisory application.
+FD Mitra is a multi-language, voice-enabled advisory platform that helps users make smarter Fixed Deposit decisions through natural conversations—either by chat or voice, in regional languages.
+
+Working MVP : https://fd-mitra.vercel.app/
+
+# Problem
+
+Fixed Deposits are widely used, but:
+
+Many users don’t fully understand interest rates, returns, or tenure options
+Financial platforms are often complex and English-centric
+Regional language users face accessibility barriers
+
+# Solution
+
+FD Mitra simplifies FD decision-making using:
+
+ Voice + Chat Interface
+ Multi-language support (including 4 regional languages)
+ Smart FD guidance based on user input
+ Simple, conversational experience instead of complex forms
+
+# Key Features
+
+ Voice-enabled interaction (speak instead of typing)
+ Chat-based advisory system
+ Regional language support
+ Intelligent responses for FD-related queries
+ Fast, responsive UI
 
 ## Prerequisites
 - Node.js 18+
